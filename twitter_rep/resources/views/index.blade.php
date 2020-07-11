@@ -7,8 +7,8 @@
 </head>
 <body>
     <head>
-        <p><a href="{{ url('/login') }}"></a>ログイン</p>
-        <p><a href="{{ url('/signup') }}"></a>アカウント作成</p>
+        <p><a href="{{ url('/login') }}">ログイン</a></p>
+        <p><a href="{{ url('/register') }}">アカウント作成</a></p>
     </head>
 </body>
 </html>

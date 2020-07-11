@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Post;
 use App\Master;
 use App\Tweet;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class MasterController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        
-        return view('user');
+        $tweets = Tweet::latest()->get();
+
+        return view('master', compact('tweets'));
     }
 
     /**
@@ -27,7 +27,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('master');
     }
 
     /**
@@ -38,27 +38,31 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tweet = new Tweet();
+        $tweet->content = $request->input('content');
+        $tweet->save();
+
+        return redirect('masters');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Post  $post
+     * @param  \App\Master  $master
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show(Master $master, Tweet $tweet)
     {
-        //
+        return view('masters', compact('tweet'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Post  $post
+     * @param  \App\Master  $master
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit(Master $master)
     {
         //
     }
@@ -67,10 +71,10 @@ class PostController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Post  $post
+     * @param  \App\Master  $master
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, Master $master)
     {
         //
     }
@@ -78,10 +82,10 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Post  $post
+     * @param  \App\Master  $master
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(Master $master)
     {
         //
     }
