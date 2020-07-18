@@ -4,10 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Master;
 use App\Tweet;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MasterController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +21,10 @@ class MasterController extends Controller
      */
     public function index()
     {
+        // if(!Auth::check()){
+        //     return redirect('/');
+        // }
+
         $tweets = Tweet::latest()->get();
 
         return view('master', compact('tweets'));
@@ -39,6 +49,7 @@ class MasterController extends Controller
     public function store(Request $request)
     {
         $tweet = new Tweet();
+        $tweet->user_id = Auth::id();
         $tweet->content = $request->input('content');
         $tweet->save();
 
@@ -88,5 +99,10 @@ class MasterController extends Controller
     public function destroy(Master $master)
     {
         //
+    }
+
+    public function logout() 
+    {
+        return Auth::logout();
     }
 }

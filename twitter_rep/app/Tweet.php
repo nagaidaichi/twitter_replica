@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tweet extends Model
 {
-    public function master()
+    public function user()
     {
-        return $this->hasMany('App\master');
+        return $this->belongsTo('App\User');
     }
 }

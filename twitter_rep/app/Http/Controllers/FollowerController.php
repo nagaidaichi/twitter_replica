@@ -33,9 +33,10 @@ class FollowerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        \Auth::user()->follow($id);
+        return back();
     }
 
     /**
@@ -78,8 +79,9 @@ class FollowerController extends Controller
      * @param  \App\Follower  $follower
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Follower $follower)
+    public function destroy(Follower $follower, $id)
     {
-        //
+        \Auth::user()->unfollow($id);
+        return back();
     }
 }
