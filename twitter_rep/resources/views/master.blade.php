@@ -4,40 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/header.css">
 </head>
-<body>
-<div>
-    <h2><span> : {{ Auth::user()->name }}がログイン中</span></h2>
-    <div>
-        <form method="POST" action="/masters">
-            {{ csrf_field() }}
-            <textarea name="content" placeholder="What's happening?"></textarea>
-            <button type="submit">Tweet</button>
-        </form>
-    </div>
-    <div>
-        @foreach($tweets as $tweet) 
+<body class="backGround text">
+<div class="container">
+    <header class="header">
+        <a href="/masters"><div class="headerContent h_home">Home</div></a> 
+        <a href="/follower"><div class="headerContent h_whoToFollow">Who to follow</div></a> 
+        <a href="/logout"><div class="headerContent h_logOut">Log out</div></a> 
+    </header>
+    <div class="section width">
+        <div class="home">Home</div>
         <div>
-            <span>{{ $tweet->user->name }}</span>
-            @if (Auth::id() != $tweet->user->id)
-                @if (Auth::user()->is_following($tweet->user->id))
-                <span>: フォロー中</span>
-                <form action="{{ route('unfollow', ['follower' => $tweet->user->id]) }}" method="delete">
-                    {{ csrf_field() }}
-                    <button tupe="submit">unfollow</button>
-                </form>
-                @else
-                <form action="{{ route('follow', ['follower' => $tweet->user->id]) }}" method="post">
-                    {{ csrf_field() }}
-                    <button tupe="submit">follow</button>
-                </form>
-                @endif
-            @endif
-            <!-- <div>{{ date('Y/m/d', strtotime($tweet->created_at)) }}</div> -->
-            <div>{{ $tweet->content }}</div>
+            <form method="POST" action="/masters">
+                {{ csrf_field() }}
+                <textarea id="tweetContent" type="text" name="content" placeholder="What's happening?"></textarea>
+                <button id="tweet" class="tweet" type="submit" onsubmit="return tweet(e)">Tweet</button>
+            </form>
         </div>
-        @endforeach
+        <div class="border"></div>
+        <div class="timeline">
+            @foreach($tweets as $tweet) 
+                <div class="box">
+                    <div class="name">{{ $tweet->user->name }}</div>
+                    <div class="height">{{ $tweet->content }}</div>
+                </div>
+            @endforeach
+            
+        </div>
     </div>
+    <footer class="footer"></footer>
 </div>
+<script type="text/javascript" src="js/master.js">
+</script>
 </body>
 </html>

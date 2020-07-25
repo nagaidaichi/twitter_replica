@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+}
+
+a:focus, a:visited, a:active, a {
+    border: none;
+    color: #ffffff;
+    outline: none;
+    text-decoration: none ;
+}
+
+a:hover {
+    color: rgb(29, 161, 242);
+}
+
+body {
+    background-color: rgb(21, 32, 43);
+    margin: 0;
+}
+
+button {
+    background: none;
+	border: none;
+	outline: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+    appearance: none;
+    padding: -1px -6px;
+    
+}
+
+textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid #38454d;
+    color: #ffffff;
+    font-size: 19px;
+    margin-left: 10px;
+    outline: none;
+    padding: 15px 0 10px 10px;
+    resize: none;
+    width: 95%;
+}

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Follower;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FollowerController extends Controller
 {
@@ -14,7 +16,11 @@ class FollowerController extends Controller
      */
     public function index()
     {
-        //
+        $authUser = Auth::user();
+        $users = User::all();
+        $follow = Follower::all()->toArray();
+        // dd($follow);
+        return view('follower', compact('users'));
     }
 
     /**

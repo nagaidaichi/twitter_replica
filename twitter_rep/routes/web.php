@@ -18,12 +18,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('masters', 'MasterController');
+Route::resource('follower', 'FollowerController');
 Route::get('/logout', 'MasterController@logout');
+Route::get('follower', 'FollowerController@index');
 
 Route::group(['prefix' => 'masters/{id}'], function () {
-    Route::get('following', 'UsersController@following')->name('following');
-    Route::get('followed', 'UsersController@followed')->name('followed');
+    // Route::get('following', 'Users@following')->name('following');
+    // Route::get('followed', 'Users@followed')->name('followed');
     Route::post('follow', 'FollowerController@store')->name('follow');
-    // Route::delete('unfollow', 'FollowerController@destroy')->name('unfollow');
     Route::get('unfollow', 'FollowerController@destroy')->name('unfollow');
 });

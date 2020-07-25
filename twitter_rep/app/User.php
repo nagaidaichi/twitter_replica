@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
 {
@@ -37,19 +38,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function following()
+    public function followings()
     {
-        return $this->belongsToMany(User::class, 'followers', 'following', 'followed')->withTimestamps();
+        return $this->belongsToMany(User::class, 'followers', 'following', 'followed');
     }
 
     public function followed()
     {
-        return $this->belongsToMany(User::class, 'followers', 'followed', 'following')->withTimestamps();
+        return $this->belongsToMany(User::class, 'followers', 'followed', 'following');
     }
 
     public function is_following($userId)
     {
-        return $this->following()->where('followed', $userId)->exists();
+        return $this->followings()->where('followed', $userId)->exists();
     }
 
     public function follow($userId)
@@ -58,7 +59,7 @@ class User extends Authenticatable
         $myself = $this->id == $userId;
     
         if (!$existing && !$myself) {
-            $this->following()->attach($userId);
+            $this->followings()->attach($userId);
         }
     }
 
@@ -68,8 +69,13 @@ class User extends Authenticatable
         $myself = $this->id == $userId;
     
         if ($existing && !$myself) {
-            $this->following()->detach($userId);
+            $this->followings()->detach($userId);
         }
+    }
+
+    public function tweet()
+    {
+        return $this->hasMany('App\Tweet');
     }
 }
 

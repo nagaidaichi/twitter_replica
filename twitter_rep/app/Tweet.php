@@ -10,4 +10,9 @@ class Tweet extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function getUserTimeLine($user_id) 
+    {
+        return $this->whereIn('user_id', [$user_id])->get();
+    }
 }

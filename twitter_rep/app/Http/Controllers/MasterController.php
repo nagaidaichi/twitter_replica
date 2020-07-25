@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Master;
 use App\Tweet;
 use App\User;
+use App\Users;
+use App\Follower;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,10 +26,17 @@ class MasterController extends Controller
         // if(!Auth::check()){
         //     return redirect('/');
         // }
+        $user_id = Auth::id();
+        $user = Auth::user();
+        $followings = $user->followings()->with('tweet')->get();
+        $followings_id = [];
+        foreach($followings as $item){
+            $followings_id[] += $item->id;
+        }
+        $followings_id[] += $user_id;
+        $tweets = Tweet::latest()->whereIn('user_id', $followings_id)->with('user')->orderBy('created_at', 'desc')->get();
 
-        $tweets = Tweet::latest()->get();
-
-        return view('master', compact('tweets'));
+        return view('master', compact('tweets', 'followings'));
     }
 
     /**
@@ -48,6 +57,7 @@ class MasterController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $tweet = new Tweet();
         $tweet->user_id = Auth::id();
         $tweet->content = $request->input('content');
@@ -103,6 +113,7 @@ class MasterController extends Controller
 
     public function logout() 
     {
-        return Auth::logout();
+        Auth::logout();
+        return redirect()->route('login');
     }
 }
