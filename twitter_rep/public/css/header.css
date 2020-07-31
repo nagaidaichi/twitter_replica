@@ -19,8 +19,57 @@
     padding: 15px 15px 15px 30px;
 }
 
-
-
 .section {
     width: 50%;
+}
+
+@media screen and (max-width:480px){
+    .header {
+        display: none;
+    }
+
+    .section {
+        width: 100%;
+    }
+
+    .footer {
+        width: 0;
+    }
+}
+
+@media screen and (min-width:640px) and ( max-width:1030px) {
+
+    
+    .img {
+        width: 30px;
+    }
+    
+    .header {
+        width: 10%;
+        padding-left: 0;
+    }
+
+    .headerContent {
+        padding: 0;
+    }
+
+    .section {
+        width: 90%;
+    }
+
+    .footer {
+        display: none;
+    }
+
+}
+
+@media screen and (min-width:1024px) {
+   
+}
+
+@media screen and (min-width:1025px) {
+    .img {
+        display: none;
+    }
+   
 }

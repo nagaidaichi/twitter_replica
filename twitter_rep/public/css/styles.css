@@ -66,6 +66,10 @@ form {
     height: 15px;
 }
 
+.img {
+    width: 30px;
+}
+
 .name {
     font-weight: bold;
     /* padding-top: 10px; */
@@ -86,9 +90,78 @@ form {
     font-size: 15px;
     font-weight: bold;
     height: 40px;
-    margin: 0 0 0 580px;
+    margin: 0 0 0 auto;
+    margin-right: 10px;
     position: relative;
     width: 80px;
     
 }
 
+@media screen and (max-width:480px){
+    .pr {
+        padding-right: 10px;
+    }
+
+    .tweet {
+        margin: 0 0 0 auto;
+    }
+}
+
+@media screen and (min-width:640px) and (max-width:1030px) {
+    .headerText {
+        display: none;
+    }
+
+    
+    .h_home {
+        width: 30px;
+    }
+
+    .h_home:hover {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .h_logOut {
+        width: 30px;
+    }
+
+    .h_logOut:hover {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .h_whoToFollow {
+        width: 30px;
+    }
+
+    .h_whoToFollow:hover {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .headerContent {
+        cursor: pointer;
+        font-size: 19px;
+        font-weight: bold;
+        margin: 35px auto;
+        padding: 0 0 0 0;
+    }
+    
+    .img {
+        width: 30px;
+    }
+    
+}
+
+@media screen and (min-width:1024px) {
+
+
+}
+
+@media screen and (min-width:1025px) {
+    .img {
+        display: none;
+    }
+   
+}

@@ -19,7 +19,6 @@ class FollowerController extends Controller
         $authUser = Auth::user();
         $users = User::all();
         $follow = Follower::all()->toArray();
-        // dd($follow);
         return view('follower', compact('users'));
     }
 

@@ -3,6 +3,7 @@
     height: 30px;
     /* min-height: 70px; */
     padding:10px 15px 10px;
+    background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 24 24"><path fill="%23000000" d="..." /></svg>') no-repeat center center;
 
 }
 
@@ -168,4 +169,55 @@
 .text {
     color: #ffffff;
     font-size: 15px;
+}
+
+@media screen and (max-width:480px){
+
+}
+
+@media screen and (min-width:640px) and ( max-width:1024px) {
+    .headerText {
+        display: none;
+    }
+
+    .img {
+        width: 30px;
+    }
+
+    .h_home {
+        width: 30px;
+    }
+
+    .h_home:hover {
+        width: 30px;
+        height: 30px;
+    }
+
+    .h_logOut {
+        width: 30px;
+    }
+
+    .h_logOut:hover {
+        width: 30px;
+        height: 30px;
+    }
+
+    .h_whoToFollow {
+        width: 30px;
+    }
+
+    .h_whoToFollow:hover {
+        width: 30px;
+        height: 30px;
+    }
+
+    .headerContent {
+        cursor: pointer;
+        font-size: 19px;
+        font-weight: bold;
+        margin: 35px auto;
+        padding: 0 0 0 0;
+    }
+
+
 }

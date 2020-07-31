@@ -1,4 +1,4 @@
-function tweet(e) {
+function tweet() {
     var content = document.getElementById('tweetContent').value;
         if(!content) {
             return false;
@@ -7,9 +7,9 @@ function tweet(e) {
         }
 }
 
-// document.getElementById("tweet").onclick = function() {
-//     var content = document.getElementById("tweetContent").value;
-//         if(!content){
-//             return;
-//         }
-//   };
+//document.getElementById("tweet").onclick = function() {
+//    var content = document.getElementById("tweetContent").value;
+//        if(!content){
+//            return;
+//        }
+//};

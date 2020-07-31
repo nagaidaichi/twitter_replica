@@ -11,13 +11,13 @@
 <body class="backGround text">
 <div class="container">
     <header class="header">
-        <a href="/masters"><div class="headerContent h_home">Home</div></a> 
-        <a href="/follower"><div class="headerContent h_whoToFollow">Who to follow</div></a> 
-        <a href="/logout"><div class="headerContent h_logOut">Log out</div></a> 
+        <a href="/masters"><div class="headerContent h_home"><img class="img" src="css/img/home.svg"><span class="headerText">Home</span></div></a> 
+        <a href="/follower"><div class="headerContent h_whoToFollow"><img class="img" src="css/img/human.svg"><span class="headerText">Who to follow</span></div></a> 
+        <a href="/logout"><div class="headerContent h_logOut"><img class="img" src="css/img/logout.svg"><span class="headerText">Log out</span></div></a> 
     </header>
     <div class="section width">
         <div class="home">Home</div>
-        <div>
+        <div class="pr">
             <form method="POST" action="/masters">
                 {{ csrf_field() }}
                 <textarea id="tweetContent" type="text" name="content" placeholder="What's happening?"></textarea>
@@ -37,7 +37,6 @@
     </div>
     <footer class="footer"></footer>
 </div>
-<script type="text/javascript" src="js/master.js">
-</script>
+<script type="text/javascript" src="js/master.js"></script>
 </body>
 </html>
